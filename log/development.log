@@ -286,3 +286,821 @@ Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 523
 
 
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-10-08 10:38:11 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/gabriela-cruz/.rvm/gems/ruby-2.5.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/gabriela-cruz/.rvm/gems/ruby-2.5.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.4ms | Allocations: 466)
+Completed 200 OK in 37ms (Views: 30.0ms | ActiveRecord: 0.0ms | Allocations: 2779)
+
+
+Started GET "/users" for ::1 at 2019-10-08 10:38:16 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/new" for ::1 at 2019-10-08 10:38:23 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1180)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 2509)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%
+=begin%>
+ <form action="/users" method="post" accept-charset="UTF-8">
+
+  <label for="username">UserName</label>
+  <input id="username" type="text" name="user[username]"><br>
+
+  <label for="email">E-mail</label>
+  <input id="email" type="text" name="user[email]"><br>
+
+  <label for="password">Password</label>
+  <input id="password" type="password" name="user[password]"><br>
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="Submit">
+</form>  
+<%
+=end%>
+
+<%= form_tag("/users", method: "Post") do %>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) # make type: password %> 
+
+    <%= submit_tag("Submit") %>
+<% end %>
+
+):
+1:    <%
+2:    =begin%>
+3:     <form action="/users" method="post" accept-charset="UTF-8">
+4:    
+5:      <label for="username">UserName</label>
+6:      <input id="username" type="text" name="user[username]"><br>
+7:    
+8:      <label for="email">E-mail</label>
+9:      <input id="email" type="text" name="user[email]"><br>
+10:    
+11:      <label for="password">Password</label>
+12:      <input id="password" type="password" name="user[password]"><br>
+13:    
+14:      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+15:    
+16:      <input type="submit" value="Submit">
+17:    </form>  
+18:    <%
+19:    =end%>
+20:    
+21:    <%= form_tag("/users", method: "Post") do %>
+22:        <%= label_tag(:username, "Username:") %>
+23:        <%= text_field_tag(:username) %>
+24:    
+25:        <%= label_tag(:email, "Email:") %>
+26:        <%= text_field_tag(:email) %>
+27:    
+28:        <%= label_tag(:password, "Password:") %>
+29:        <%= password_field_tag(:password) # make type: password %> 
+30:    
+31:        <%= submit_tag("Submit") %>
+32:    <% end %>
+  
+app/views/users/new.html.erb:34: unterminated string meets end of file
+app/views/users/new.html.erb:34: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:34: unterminated string meets end of file
+app/views/users/new.html.erb:34: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:34: unterminated string meets end of file
+app/views/users/new.html.erb:34: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:34: unterminated string meets end of file
+app/views/users/new.html.erb:34: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:34: unterminated string meets end of file
+app/views/users/new.html.erb:34: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:34: unterminated string meets end of file
+app/views/users/new.html.erb:34: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/users/new" for ::1 at 2019-10-08 10:39:04 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1186)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2452)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%=begin%>
+ <form action="/users" method="post" accept-charset="UTF-8">
+
+  <label for="username">UserName</label>
+  <input id="username" type="text" name="user[username]"><br>
+
+  <label for="email">E-mail</label>
+  <input id="email" type="text" name="user[email]"><br>
+
+  <label for="password">Password</label>
+  <input id="password" type="password" name="user[password]"><br>
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="Submit">
+</form>  
+<%=end%>
+
+<%= form_tag("/users", method: "Post") do %>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) # make type: password %> 
+
+    <%= submit_tag("Submit") %>
+<% end %>
+
+):
+1:    <%=begin%>
+2:     <form action="/users" method="post" accept-charset="UTF-8">
+3:    
+4:      <label for="username">UserName</label>
+5:      <input id="username" type="text" name="user[username]"><br>
+6:    
+7:      <label for="email">E-mail</label>
+8:      <input id="email" type="text" name="user[email]"><br>
+9:    
+10:      <label for="password">Password</label>
+11:      <input id="password" type="password" name="user[password]"><br>
+12:    
+13:      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+14:    
+15:      <input type="submit" value="Submit">
+16:    </form>  
+17:    <%=end%>
+18:    
+19:    <%= form_tag("/users", method: "Post") do %>
+20:        <%= label_tag(:username, "Username:") %>
+21:        <%= text_field_tag(:username) %>
+22:    
+23:        <%= label_tag(:email, "Email:") %>
+24:        <%= text_field_tag(:email) %>
+25:    
+26:        <%= label_tag(:password, "Password:") %>
+27:        <%= password_field_tag(:password) # make type: password %> 
+28:    
+29:        <%= submit_tag("Submit") %>
+30:    <% end %>
+  
+app/views/users/new.html.erb:1: syntax error, unexpected ')'
+app/views/users/new.html.erb:17: syntax error, unexpected keyword_end
+app/views/users/new.html.erb:32: unterminated string meets end of file
+app/views/users/new.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected ')'
+app/views/users/new.html.erb:17: syntax error, unexpected keyword_end
+app/views/users/new.html.erb:32: unterminated string meets end of file
+app/views/users/new.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected ')'
+app/views/users/new.html.erb:17: syntax error, unexpected keyword_end
+app/views/users/new.html.erb:32: unterminated string meets end of file
+app/views/users/new.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected ')'
+app/views/users/new.html.erb:17: syntax error, unexpected keyword_end
+app/views/users/new.html.erb:32: unterminated string meets end of file
+app/views/users/new.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected ')'
+app/views/users/new.html.erb:17: syntax error, unexpected keyword_end
+app/views/users/new.html.erb:32: unterminated string meets end of file
+app/views/users/new.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:1: syntax error, unexpected ')'
+app/views/users/new.html.erb:17: syntax error, unexpected keyword_end
+app/views/users/new.html.erb:32: unterminated string meets end of file
+app/views/users/new.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/users/new" for ::1 at 2019-10-08 10:40:42 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1131)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 2402)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<%= form_tag("/users", method: "Post") do %>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) # make type: password %> 
+
+    <%= submit_tag("Submit") %>
+<% end %>
+
+):
+1:    
+2:    <%= form_tag("/users", method: "Post") do %>
+3:        <%= label_tag(:username, "Username:") %>
+4:        <%= text_field_tag(:username) %>
+5:    
+6:        <%= label_tag(:email, "Email:") %>
+7:        <%= text_field_tag(:email) %>
+8:    
+9:        <%= label_tag(:password, "Password:") %>
+10:        <%= password_field_tag(:password) # make type: password %> 
+11:    
+12:        <%= submit_tag("Submit") %>
+13:    <% end %>
+  
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/users/new" for ::1 at 2019-10-08 10:42:25 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1131)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2399)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<%= form_tag("/users", method: "Post") do %>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) # make type: password %> 
+
+    <%= submit_tag("Submit") %>
+<% end -%>
+
+):
+1:    
+2:    <%= form_tag("/users", method: "Post") do %>
+3:        <%= label_tag(:username, "Username:") %>
+4:        <%= text_field_tag(:username) %>
+5:    
+6:        <%= label_tag(:email, "Email:") %>
+7:        <%= text_field_tag(:email) %>
+8:    
+9:        <%= label_tag(:password, "Password:") %>
+10:        <%= password_field_tag(:password) # make type: password %> 
+11:    
+12:        <%= submit_tag("Submit") %>
+13:    <% end -%>
+  
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:15: unterminated string meets end of file
+app/views/users/new.html.erb:15: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/users/new" for ::1 at 2019-10-08 10:42:40 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1123)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2391)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<%= form_tag("/users", method: "Post") do %>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) # make type: password %> 
+
+    <%= submit_tag("Submit") %>
+
+
+):
+1:    
+2:    <%= form_tag("/users", method: "Post") do %>
+3:        <%= label_tag(:username, "Username:") %>
+4:        <%= text_field_tag(:username) %>
+5:    
+6:        <%= label_tag(:email, "Email:") %>
+7:        <%= text_field_tag(:email) %>
+8:    
+9:        <%= label_tag(:password, "Password:") %>
+10:        <%= password_field_tag(:password) # make type: password %> 
+11:    
+12:        <%= submit_tag("Submit") %>
+  
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/users/new" for ::1 at 2019-10-08 10:43:03 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1139)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 2407)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<%= form_tag("/users", method: "Post") do %>
+    <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) # make type: password %> 
+
+    <%= submit_tag("Submit") %>
+<% end %>
+<% end %>
+
+):
+1:    
+2:    <%= form_tag("/users", method: "Post") do %>
+3:        <%= label_tag(:username, "Username:") %>
+4:        <%= text_field_tag(:username) %>
+5:    
+6:        <%= label_tag(:email, "Email:") %>
+7:        <%= text_field_tag(:email) %>
+8:    
+9:        <%= label_tag(:password, "Password:") %>
+10:        <%= password_field_tag(:password) # make type: password %> 
+11:    
+12:        <%= submit_tag("Submit") %>
+13:    <% end %>
+14:    <% end %>
+  
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:16: unterminated string meets end of file
+app/views/users/new.html.erb:16: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/users/new" for ::1 at 2019-10-08 10:47:02 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 256)
+Completed 200 OK in 1100ms (Views: 1097.6ms | ActiveRecord: 0.0ms | Allocations: 1425815)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:47:43 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 375)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.0ms | Allocations: 6271)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:47:51 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 404)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 6279)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:48:15 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 443)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.0ms | Allocations: 6313)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:48:35 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1282)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2626)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+<%= form_tag("/users", method: "Post") do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:username) %>
+
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) # make type: password %> 
+    <%
+=begin%>
+ <%= label_tag(:username, "Username:") %>
+    <%= text_field_tag(:username) %>
+
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+
+    <%= label_tag(:password, "Password:") %>
+    <%= password_field_tag(:password) # make type: password %> 
+
+    <%= submit_tag("Submit") %> 
+<%
+=end%>
+<% end %>
+
+
+):
+1:    
+2:    <%= form_tag("/users", method: "Post") do %>
+3:      <%= label_tag(:username, "Username:") %>
+4:      <%= text_field_tag(:username) %>
+5:    
+6:      <%= label_tag(:email, "Email:") %>
+7:      <%= text_field_tag(:username) %>
+8:    
+9:      <%= label_tag(:email, "Email:") %>
+10:      <%= text_field_tag(:email) %>
+11:    
+12:      <%= label_tag(:password, "Password:") %>
+13:      <%= password_field_tag(:password) # make type: password %> 
+14:        <%
+15:    =begin%>
+16:     <%= label_tag(:username, "Username:") %>
+17:        <%= text_field_tag(:username) %>
+18:    
+19:        <%= label_tag(:email, "Email:") %>
+20:        <%= text_field_tag(:email) %>
+21:    
+22:        <%= label_tag(:password, "Password:") %>
+23:        <%= password_field_tag(:password) # make type: password %> 
+24:    
+25:        <%= submit_tag("Submit") %> 
+26:    <%
+27:    =end%>
+28:    <% end %>
+  
+app/views/users/new.html.erb:31: unterminated string meets end of file
+app/views/users/new.html.erb:31: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:31: unterminated string meets end of file
+app/views/users/new.html.erb:31: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:31: unterminated string meets end of file
+app/views/users/new.html.erb:31: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:31: unterminated string meets end of file
+app/views/users/new.html.erb:31: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:31: unterminated string meets end of file
+app/views/users/new.html.erb:31: syntax error, unexpected end-of-input, expecting ')'
+app/views/users/new.html.erb:31: unterminated string meets end of file
+app/views/users/new.html.erb:31: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/users/new" for ::1 at 2019-10-08 10:48:56 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 639)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 6509)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:49:15 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 687)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 6557)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:49:32 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 572)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms | Allocations: 6453)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:50:12 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 486)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 6356)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:50:31 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 486)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 6379)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:50:50 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 489)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.0ms | Allocations: 6353)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:51:15 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 490)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 6358)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:51:25 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 489)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 6356)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 10:52:07 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 486)
+Completed 200 OK in 32ms (Views: 27.6ms | ActiveRecord: 0.0ms | Allocations: 6359)
+
+
+Started POST "/users" for ::1 at 2019-10-08 10:54:09 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"cwjQ5CDZNswulO4fl2Exxe1Q5DcCxBzRm4zn1Y2BjS3fBuVOfl2V4arHC+3CHNyIH7dELLc/4yAgWb9YWHAuiw==", "username"=>"doki@example.com", "password"=>"[FILTERED]", "commit"=>"Submit"}
+Completed 400 Bad Request in 50ms (ActiveRecord: 0.0ms | Allocations: 1636)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:15:in `user_params'
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-10-08 10:55:36 -0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"cwjQ5CDZNswulO4fl2Exxe1Q5DcCxBzRm4zn1Y2BjS3fBuVOfl2V4arHC+3CHNyIH7dELLc/4yAgWb9YWHAuiw==", "username"=>"doki@example.com", "password"=>"[FILTERED]", "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 246)
+Completed 200 OK in 88ms (Views: 9.6ms | ActiveRecord: 1.2ms | Allocations: 18419)
+
+
+Started POST "/users" for ::1 at 2019-10-08 10:55:44 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"G+QU75rZr4ieT4qJWe+WFNaCpuwk9GeJbVTNMEBjdjS36iFFxF0MpRocb3sMkntZJGUG95EPmHjWgZW9lZLVkg==", "username"=>"ivan@example.com", "password"=>"[FILTERED]", "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 243)
+Completed 200 OK in 21ms (Views: 6.0ms | ActiveRecord: 0.3ms | Allocations: 8527)
+
+
+Started POST "/users" for ::1 at 2019-10-08 10:56:39 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"KoQ69HOuwL/3ccJSdoLEAGjJ3mSfv/XJMY1qxF/mMFqGig9eLSpjknMiJ6Aj/ylNmi5+fypECjiKWDJJiheT/A==", "username"=>"ivan@example.com", "password"=>"[FILTERED]", "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 243)
+Completed 200 OK in 14ms (Views: 8.2ms | ActiveRecord: 0.3ms | Allocations: 8520)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "ivan@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "ivan@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "ivansitoelmejor"], ["email", "ivan@example.com"], ["password", "123456"], ["created_at", "2019-10-08 17:59:30.091801"], ["updated_at", "2019-10-08 17:59:30.091801"]]
+  [1m[35m (81.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users" for ::1 at 2019-10-08 10:59:50 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/new" for ::1 at 2019-10-08 10:59:55 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 243)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.0ms | Allocations: 5176)
+
+
+Started POST "/users" for ::1 at 2019-10-08 11:00:14 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"qH21zfE3MDnmO/Nth6Ir6C95FTbEVv0B51ddCEfXskkEc4Bnr7OTFGJoFp/S38al3Z61LXGtAvBcggWFkiYR7w==", "username"=>"ivansin@example.com", "password"=>"[FILTERED]", "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 243)
+Completed 200 OK in 18ms (Views: 10.0ms | ActiveRecord: 0.3ms | Allocations: 8505)
+
+
+Started GET "/users" for ::1 at 2019-10-08 11:01:30 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/new" for ::1 at 2019-10-08 11:01:34 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 484)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.0ms | Allocations: 6357)
+
+
+Started POST "/users" for ::1 at 2019-10-08 11:01:59 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"rv9fINCtT/JYHF+Mg1Gm1vQc/zBE/CRG94CZjJf/S1QC8WqKjins39xPun7WLEubBvtfK/EH27dMVcEBQg7o8g==", "username"=>"", "email"=>"", "password"=>"[FILTERED]", "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 244)
+Completed 200 OK in 12ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 9654)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/gabriela-cruz/.rvm/gems/ruby-2.5.1/bin/rake:23)
+Started GET "/users/new" for ::1 at 2019-10-08 11:04:02 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 484)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 6348)
+
+
+Started POST "/users" for ::1 at 2019-10-08 11:04:06 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"17raB8SOMggatdC29VHhMERBG8DdD5P9sqBN0SkGqBd7tO+tmgqRJZ7mNUSgLAx9tqa722j0bAwJdRVc/PcLsQ==", "username"=>"", "email"=>"", "password"=>"[FILTERED]", "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 244)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 9490)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 11:05:20 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 243)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 5175)
+
+
+Started POST "/users" for ::1 at 2019-10-08 11:05:47 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"Itg0NpPIqtKnPiWq5WsMhZxITLvCx0ETQ0jj3+pyG6+O1gGczUwJ/yNtwFiwFuHIbq/soHc8vuL4nbtSP4O4CQ==", "username"=>"ivanzote", "email"=>"ivan123@example.com", "password"=>"[FILTERED]", "commit"=>"Submit"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "ivan123@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "ivanzote"], ["email", "ivan123@example.com"], ["password", "123456"], ["created_at", "2019-10-08 18:05:47.168739"], ["updated_at", "2019-10-08 18:05:47.168739"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (144.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/new
+Completed 302 Found in 150ms (ActiveRecord: 144.5ms | Allocations: 5095)
+
+
+Started GET "/users/new" for ::1 at 2019-10-08 11:05:47 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 243)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 5176)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
