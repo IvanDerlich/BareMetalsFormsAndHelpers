@@ -1543,3 +1543,31 @@ Processing by UsersController#create as HTML
 Completed 200 OK in 15ms (Views: 9.9ms | ActiveRecord: 0.3ms | Allocations: 10903)
 
 
+Started GET "/" for 127.0.0.1 at 2019-10-09 20:41:19 -0300
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.5.0/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.5.0/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 21.3ms | Allocations: 462)
+Completed 200 OK in 85ms (Views: 39.6ms | ActiveRecord: 0.0ms | Allocations: 2724)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2019-10-09 20:41:27 -0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 82.6ms | Allocations: 5224)
+  Rendered users/new.html.erb within layouts/application (Duration: 84.1ms | Allocations: 5542)
+Completed 200 OK in 1349ms (Views: 1336.2ms | ActiveRecord: 0.8ms | Allocations: 1432627)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2019-10-09 20:41:38 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (26.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `edit'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 2.3ms | Allocations: 776)
+  Rendered users/edit.html.erb within layouts/application (Duration: 3.1ms | Allocations: 956)
+Completed 200 OK in 63ms (Views: 10.3ms | ActiveRecord: 26.2ms | Allocations: 7476)
+
+
